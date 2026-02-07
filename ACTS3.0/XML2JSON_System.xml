@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System name="XML2JSON_System">
+  <Parameters>
+    <Parameter id="1" name="Valid_XML" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="2" name="Valid_Filename" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="3" name="NestingDepth" type="1">
+      <values>
+        <value>Zero</value>
+        <value>Shallow</value>
+        <value>Deep</value>
+        <value>ExceedsBuffer</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="4" name="AttributeType" type="1">
+      <values>
+        <value>None</value>
+        <value>Standard</value>
+        <value>Namespace</value>
+        <value>SpecialChars</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="5" name="SpecialChars" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="6" name="Encoding" type="1">
+      <values>
+        <value>UTF-8</value>
+        <value>UTF-16</value>
+        <value>ASCII</value>
+        <value>Invalid</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="7" name="FileSize" type="1">
+      <values>
+        <value>Empty</value>
+        <value>Small</value>
+        <value>Large</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+  </Parameters>
+  <OutputParameters />
+  <Relations />
+  <Constraints />
+</System>
+
