@@ -68,5 +68,185 @@
   <OutputParameters />
   <Relations />
   <Constraints />
+  <Testset doi="2">
+    <Testcase TCNo="0">
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>Zero</Value>
+      <Value>None</Value>
+      <Value>false</Value>
+      <Value>UTF-16</Value>
+      <Value>Small</Value>
+    </Testcase>
+    <Testcase TCNo="1">
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>Zero</Value>
+      <Value>Standard</Value>
+      <Value>true</Value>
+      <Value>ASCII</Value>
+      <Value>Large</Value>
+    </Testcase>
+    <Testcase TCNo="2">
+      <Value>3</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>Zero</Value>
+      <Value>Namespace</Value>
+      <Value>false</Value>
+      <Value>Invalid</Value>
+      <Value>Empty</Value>
+    </Testcase>
+    <Testcase TCNo="3">
+      <Value>4</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>Zero</Value>
+      <Value>SpecialChars</Value>
+      <Value>true</Value>
+      <Value>UTF-8</Value>
+      <Value>Small</Value>
+    </Testcase>
+    <Testcase TCNo="4">
+      <Value>5</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>Shallow</Value>
+      <Value>None</Value>
+      <Value>false</Value>
+      <Value>ASCII</Value>
+      <Value>Empty</Value>
+    </Testcase>
+    <Testcase TCNo="5">
+      <Value>6</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>Shallow</Value>
+      <Value>Standard</Value>
+      <Value>true</Value>
+      <Value>Invalid</Value>
+      <Value>Small</Value>
+    </Testcase>
+    <Testcase TCNo="6">
+      <Value>7</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>Shallow</Value>
+      <Value>Namespace</Value>
+      <Value>false</Value>
+      <Value>UTF-8</Value>
+      <Value>Large</Value>
+    </Testcase>
+    <Testcase TCNo="7">
+      <Value>8</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>Shallow</Value>
+      <Value>SpecialChars</Value>
+      <Value>true</Value>
+      <Value>UTF-16</Value>
+      <Value>Empty</Value>
+    </Testcase>
+    <Testcase TCNo="8">
+      <Value>9</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>Deep</Value>
+      <Value>None</Value>
+      <Value>true</Value>
+      <Value>Invalid</Value>
+      <Value>Large</Value>
+    </Testcase>
+    <Testcase TCNo="9">
+      <Value>10</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>Deep</Value>
+      <Value>Standard</Value>
+      <Value>false</Value>
+      <Value>UTF-8</Value>
+      <Value>Empty</Value>
+    </Testcase>
+    <Testcase TCNo="10">
+      <Value>11</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>Deep</Value>
+      <Value>Namespace</Value>
+      <Value>true</Value>
+      <Value>UTF-16</Value>
+      <Value>Small</Value>
+    </Testcase>
+    <Testcase TCNo="11">
+      <Value>12</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>Deep</Value>
+      <Value>SpecialChars</Value>
+      <Value>false</Value>
+      <Value>ASCII</Value>
+      <Value>Large</Value>
+    </Testcase>
+    <Testcase TCNo="12">
+      <Value>13</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>ExceedsBuffer</Value>
+      <Value>None</Value>
+      <Value>true</Value>
+      <Value>UTF-8</Value>
+      <Value>Empty</Value>
+    </Testcase>
+    <Testcase TCNo="13">
+      <Value>14</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>ExceedsBuffer</Value>
+      <Value>Standard</Value>
+      <Value>false</Value>
+      <Value>UTF-16</Value>
+      <Value>Large</Value>
+    </Testcase>
+    <Testcase TCNo="14">
+      <Value>15</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>ExceedsBuffer</Value>
+      <Value>Namespace</Value>
+      <Value>false</Value>
+      <Value>ASCII</Value>
+      <Value>Small</Value>
+    </Testcase>
+    <Testcase TCNo="15">
+      <Value>16</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>ExceedsBuffer</Value>
+      <Value>SpecialChars</Value>
+      <Value>false</Value>
+      <Value>Invalid</Value>
+      <Value>Large</Value>
+    </Testcase>
+  </Testset>
+  <Header>
+    <Value />
+    <Value>VALID_XML</Value>
+    <Value>VALID_FILENAME</Value>
+    <Value>NESTINGDEPTH</Value>
+    <Value>ATTRIBUTETYPE</Value>
+    <Value>SPECIALCHARS</Value>
+    <Value>ENCODING</Value>
+    <Value>FILESIZE</Value>
+  </Header>
+  <Stat-Data>
+    <ExecutionTime>0.021</ExecutionTime>
+    <MaxDomainSize>4</MaxDomainSize>
+    <MinDomainSize>2</MinDomainSize>
+    <TotalNoOfCombination>186</TotalNoOfCombination>
+    <TotalNoOfTests>16</TotalNoOfTests>
+    <Algorithm>IPOG</Algorithm>
+  </Stat-Data>
 </System>
 
