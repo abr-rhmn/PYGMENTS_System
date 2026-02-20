@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System name="PYGMENTS_System">
+  <Parameters>
+    <Parameter id="0" name="file_existence" type="1">
+      <values>
+        <value>exists</value>
+        <value>missing</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="1" name="file_content" type="1">
+      <values>
+        <value>empty</value>
+        <value>valid_syntax</value>
+        <value>invalid_syntax</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="2" name="lexer" type="1">
+      <values>
+        <value>omitted</value>
+        <value>valid_match</value>
+        <value>valid_mismatch</value>
+        <value>invalid</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="3" name="lexer_flag" type="1">
+      <values>
+        <value>omitted</value>
+        <value>valid_match</value>
+        <value>valid_mismatch</value>
+        <value>invalid</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="4" name="formatter" type="1">
+      <values>
+        <value>omitted</value>
+        <value>valid</value>
+        <value>invalid</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="5" name="formatter_flag" type="1">
+      <values>
+        <value>omitted</value>
+        <value>valid</value>
+        <value>invalid</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="6" name="output" type="1">
+      <values>
+        <value>stdout</value>
+        <value>file_path</value>
+        <value>restricted</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+  </Parameters>
+  <OutputParameters />
+  <Relations />
+  <Constraints />
+  <Testset doi="2">
+    <Testcase TCNo="0">
+      <Value>1</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+    </Testcase>
+    <Testcase TCNo="1">
+      <Value>2</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+    </Testcase>
+    <Testcase TCNo="2">
+      <Value>3</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
+      <Value>omitted</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+    </Testcase>
+    <Testcase TCNo="3">
+      <Value>4</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+    </Testcase>
+    <Testcase TCNo="4">
+      <Value>5</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+    </Testcase>
+    <Testcase TCNo="5">
+      <Value>6</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
+      <Value>valid_match</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+    </Testcase>
+    <Testcase TCNo="6">
+      <Value>7</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+    </Testcase>
+    <Testcase TCNo="7">
+      <Value>8</Value>
+      <Value>missing</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+    </Testcase>
+    <Testcase TCNo="8">
+      <Value>9</Value>
+      <Value>exists</Value>
+      <Value>empty</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+    </Testcase>
+    <Testcase TCNo="9">
+      <Value>10</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid_match</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+    </Testcase>
+    <Testcase TCNo="10">
+      <Value>11</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+    </Testcase>
+    <Testcase TCNo="11">
+      <Value>12</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+    </Testcase>
+    <Testcase TCNo="12">
+      <Value>13</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+    </Testcase>
+    <Testcase TCNo="13">
+      <Value>14</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+    </Testcase>
+    <Testcase TCNo="14">
+      <Value>15</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
+      <Value>invalid</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+    </Testcase>
+    <Testcase TCNo="15">
+      <Value>16</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+    </Testcase>
+    <Testcase TCNo="16">
+      <Value>17</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+    </Testcase>
+  </Testset>
+  <Header>
+    <Value />
+    <Value>FILE_EXISTENCE</Value>
+    <Value>FILE_CONTENT</Value>
+    <Value>LEXER</Value>
+    <Value>LEXER_FLAG</Value>
+    <Value>FORMATTER</Value>
+    <Value>FORMATTER_FLAG</Value>
+    <Value>OUTPUT</Value>
+  </Header>
+  <Stat-Data>
+    <ExecutionTime>0.018</ExecutionTime>
+    <MaxDomainSize>4</MaxDomainSize>
+    <MinDomainSize>2</MinDomainSize>
+    <TotalNoOfCombination>206</TotalNoOfCombination>
+    <TotalNoOfTests>17</TotalNoOfTests>
+    <Algorithm>IPOG</Algorithm>
+  </Stat-Data>
+</System>
+

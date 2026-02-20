@@ -1,0 +1,24 @@
+# ACTS Test Suite Generation: Thu Feb 19 02:11:57 PST 2026
+#  '*' represents don't care value 
+# Degree of interaction coverage: 2
+# Number of parameters: 7
+# Maximum number of values per parameter: 4
+# Number of configurations: 17
+file_existence,file_content,lexer,lexer_flag,formatter,formatter_flag,output
+missing,valid_syntax,omitted,omitted,valid,valid,file_path
+exists,invalid_syntax,omitted,valid_match,invalid,invalid,restricted
+missing,empty,omitted,valid_mismatch,omitted,omitted,stdout
+exists,valid_syntax,omitted,invalid,invalid,omitted,file_path
+exists,invalid_syntax,valid_match,omitted,omitted,valid,restricted
+missing,empty,valid_match,valid_match,valid,invalid,stdout
+exists,valid_syntax,valid_match,valid_mismatch,invalid,valid,stdout
+missing,invalid_syntax,valid_match,invalid,valid,omitted,restricted
+exists,empty,valid_mismatch,omitted,invalid,invalid,file_path
+missing,valid_syntax,valid_mismatch,valid_match,omitted,omitted,restricted
+exists,invalid_syntax,valid_mismatch,valid_mismatch,valid,valid,stdout
+missing,empty,valid_mismatch,invalid,omitted,invalid,file_path
+missing,valid_syntax,invalid,omitted,valid,omitted,stdout
+exists,invalid_syntax,invalid,valid_match,invalid,valid,file_path
+missing,empty,invalid,valid_mismatch,omitted,invalid,restricted
+missing,empty,invalid,invalid,invalid,valid,stdout
+missing,valid_syntax,valid_match,valid_mismatch,valid,invalid,file_path
