@@ -5,6 +5,7 @@
       <values>
         <value>exists</value>
         <value>missing</value>
+        <value>na</value>
       </values>
       <basechoices />
       <invalidValues />
@@ -14,21 +15,12 @@
         <value>empty</value>
         <value>valid_syntax</value>
         <value>invalid_syntax</value>
+        <value>na</value>
       </values>
       <basechoices />
       <invalidValues />
     </Parameter>
     <Parameter id="2" name="lexer" type="1">
-      <values>
-        <value>omitted</value>
-        <value>valid_match</value>
-        <value>valid_mismatch</value>
-        <value>invalid</value>
-      </values>
-      <basechoices />
-      <invalidValues />
-    </Parameter>
-    <Parameter id="3" name="lexer_flag" type="1">
       <values>
         <value>omitted</value>
         <value>valid_match</value>
@@ -47,15 +39,6 @@
       <basechoices />
       <invalidValues />
     </Parameter>
-    <Parameter id="5" name="formatter_flag" type="1">
-      <values>
-        <value>omitted</value>
-        <value>valid</value>
-        <value>invalid</value>
-      </values>
-      <basechoices />
-      <invalidValues />
-    </Parameter>
     <Parameter id="6" name="output" type="1">
       <values>
         <value>stdout</value>
@@ -65,180 +48,1921 @@
       <basechoices />
       <invalidValues />
     </Parameter>
+    <Parameter id="8" name="input_source" type="1">
+      <values>
+        <value>stdin</value>
+        <value>file_path</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="9" name="file_name_format" type="1">
+      <values>
+        <value>standard_ext</value>
+        <value>no_ext</value>
+        <value>special_chars</value>
+        <value>na</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="10" name="file_size" type="1">
+      <values>
+        <value>typical</value>
+        <value>massive</value>
+        <value>long_line</value>
+        <value>na</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="11" name="input_encoding" type="1">
+      <values>
+        <value>utf8_standard</value>
+        <value>utf16_bom</value>
+        <value>invalid</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="12" name="formatte_config" type="1">
+      <values>
+        <value>ommited</value>
+        <value>valid_config</value>
+        <value>invalid_key</value>
+        <value>malformed_syntax</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="13" name="style_option" type="1">
+      <values>
+        <value>ommited</value>
+        <value>valid_builtin</value>
+        <value>invalid_style</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="14" name="filter" type="1">
+      <values>
+        <value>omited</value>
+        <value>valid_filter</value>
+        <value>raise_on_error</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
   </Parameters>
   <OutputParameters />
   <Relations />
-  <Constraints />
-  <Testset doi="2">
+  <Constraints>
+    <Constraint text="input_source = &quot;stdin&quot; =&gt; file_name_format = &quot;na&quot;">
+      <Parameters>
+        <Parameter name="input_source" />
+        <Parameter name="file_name_format" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="file_existence = &quot;missing&quot; =&gt; file_size = &quot;na&quot;">
+      <Parameters>
+        <Parameter name="file_existence" />
+        <Parameter name="file_size" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="input_source = &quot;file_path&quot; =&gt; file_name_format != &quot;na&quot;">
+      <Parameters>
+        <Parameter name="input_source" />
+        <Parameter name="file_name_format" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="file_content = &quot;empty&quot; =&gt; file_size = &quot;na&quot;">
+      <Parameters>
+        <Parameter name="file_content" />
+        <Parameter name="file_size" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="input_source = &quot;stdin&quot; =&gt; file_size = &quot;na&quot;">
+      <Parameters>
+        <Parameter name="input_source" />
+        <Parameter name="file_size" />
+      </Parameters>
+    </Constraint>
+  </Constraints>
+  <Testset doi="3">
     <Testcase TCNo="0">
       <Value>1</Value>
-      <Value>missing</Value>
-      <Value>valid_syntax</Value>
-      <Value>omitted</Value>
-      <Value>omitted</Value>
-      <Value>valid</Value>
-      <Value>valid</Value>
-      <Value>file_path</Value>
-    </Testcase>
-    <Testcase TCNo="1">
-      <Value>2</Value>
       <Value>exists</Value>
-      <Value>invalid_syntax</Value>
-      <Value>omitted</Value>
-      <Value>valid_match</Value>
-      <Value>invalid</Value>
-      <Value>invalid</Value>
-      <Value>restricted</Value>
-    </Testcase>
-    <Testcase TCNo="2">
-      <Value>3</Value>
-      <Value>missing</Value>
       <Value>empty</Value>
-      <Value>omitted</Value>
-      <Value>valid_mismatch</Value>
       <Value>omitted</Value>
       <Value>omitted</Value>
       <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="1">
+      <Value>2</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="2">
+      <Value>3</Value>
+      <Value>na</Value>
+      <Value>empty</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
     </Testcase>
     <Testcase TCNo="3">
       <Value>4</Value>
       <Value>exists</Value>
-      <Value>valid_syntax</Value>
-      <Value>omitted</Value>
-      <Value>invalid</Value>
-      <Value>invalid</Value>
-      <Value>omitted</Value>
-      <Value>file_path</Value>
-    </Testcase>
-    <Testcase TCNo="4">
-      <Value>5</Value>
-      <Value>exists</Value>
-      <Value>invalid_syntax</Value>
-      <Value>valid_match</Value>
-      <Value>omitted</Value>
+      <Value>empty</Value>
       <Value>omitted</Value>
       <Value>valid</Value>
       <Value>restricted</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="4">
+      <Value>5</Value>
+      <Value>na</Value>
+      <Value>empty</Value>
+      <Value>valid_match</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
     </Testcase>
     <Testcase TCNo="5">
       <Value>6</Value>
       <Value>missing</Value>
       <Value>empty</Value>
       <Value>valid_match</Value>
-      <Value>valid_match</Value>
-      <Value>valid</Value>
       <Value>invalid</Value>
       <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
     </Testcase>
     <Testcase TCNo="6">
       <Value>7</Value>
       <Value>exists</Value>
-      <Value>valid_syntax</Value>
+      <Value>empty</Value>
       <Value>valid_match</Value>
-      <Value>valid_mismatch</Value>
-      <Value>invalid</Value>
-      <Value>valid</Value>
-      <Value>stdout</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>malformed_syntax</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
     </Testcase>
     <Testcase TCNo="7">
       <Value>8</Value>
       <Value>missing</Value>
-      <Value>invalid_syntax</Value>
+      <Value>empty</Value>
       <Value>valid_match</Value>
-      <Value>invalid</Value>
-      <Value>valid</Value>
       <Value>omitted</Value>
       <Value>restricted</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>invalid_key</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
     </Testcase>
     <Testcase TCNo="8">
       <Value>9</Value>
       <Value>exists</Value>
       <Value>empty</Value>
       <Value>valid_mismatch</Value>
-      <Value>omitted</Value>
-      <Value>invalid</Value>
-      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
       <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
     </Testcase>
     <Testcase TCNo="9">
       <Value>10</Value>
-      <Value>missing</Value>
-      <Value>valid_syntax</Value>
-      <Value>valid_mismatch</Value>
-      <Value>valid_match</Value>
-      <Value>omitted</Value>
-      <Value>omitted</Value>
-      <Value>restricted</Value>
-    </Testcase>
-    <Testcase TCNo="10">
-      <Value>11</Value>
-      <Value>exists</Value>
-      <Value>invalid_syntax</Value>
-      <Value>valid_mismatch</Value>
-      <Value>valid_mismatch</Value>
-      <Value>valid</Value>
-      <Value>valid</Value>
-      <Value>stdout</Value>
-    </Testcase>
-    <Testcase TCNo="11">
-      <Value>12</Value>
-      <Value>missing</Value>
+      <Value>na</Value>
       <Value>empty</Value>
       <Value>valid_mismatch</Value>
       <Value>invalid</Value>
-      <Value>omitted</Value>
-      <Value>invalid</Value>
       <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="10">
+      <Value>11</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="11">
+      <Value>12</Value>
+      <Value>na</Value>
+      <Value>empty</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
     </Testcase>
     <Testcase TCNo="12">
       <Value>13</Value>
       <Value>missing</Value>
-      <Value>valid_syntax</Value>
+      <Value>empty</Value>
       <Value>invalid</Value>
-      <Value>omitted</Value>
-      <Value>valid</Value>
-      <Value>omitted</Value>
-      <Value>stdout</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
     </Testcase>
     <Testcase TCNo="13">
       <Value>14</Value>
       <Value>exists</Value>
-      <Value>invalid_syntax</Value>
+      <Value>empty</Value>
       <Value>invalid</Value>
-      <Value>valid_match</Value>
-      <Value>invalid</Value>
-      <Value>valid</Value>
+      <Value>omitted</Value>
       <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
     </Testcase>
     <Testcase TCNo="14">
       <Value>15</Value>
-      <Value>missing</Value>
+      <Value>na</Value>
       <Value>empty</Value>
-      <Value>invalid</Value>
-      <Value>valid_mismatch</Value>
-      <Value>omitted</Value>
-      <Value>invalid</Value>
-      <Value>restricted</Value>
-    </Testcase>
-    <Testcase TCNo="15">
-      <Value>16</Value>
-      <Value>missing</Value>
-      <Value>empty</Value>
-      <Value>invalid</Value>
-      <Value>invalid</Value>
       <Value>invalid</Value>
       <Value>valid</Value>
       <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="15">
+      <Value>16</Value>
+      <Value>na</Value>
+      <Value>empty</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
     </Testcase>
     <Testcase TCNo="16">
       <Value>17</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>typical</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="17">
+      <Value>18</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>massive</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="18">
+      <Value>19</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>long_line</Value>
+      <Value>utf16_bom</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="19">
+      <Value>20</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="20">
+      <Value>21</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>massive</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="21">
+      <Value>22</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>typical</Value>
+      <Value>utf8_standard</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="22">
+      <Value>23</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>long_line</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="23">
+      <Value>24</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="24">
+      <Value>25</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="25">
+      <Value>26</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>typical</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="26">
+      <Value>27</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>massive</Value>
+      <Value>invalid</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="27">
+      <Value>28</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="28">
+      <Value>29</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>typical</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="29">
+      <Value>30</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="30">
+      <Value>31</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>massive</Value>
+      <Value>utf8_standard</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="31">
+      <Value>32</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="32">
+      <Value>33</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>massive</Value>
+      <Value>utf16_bom</Value>
+      <Value>malformed_syntax</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="33">
+      <Value>34</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>typical</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="34">
+      <Value>35</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>long_line</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="35">
+      <Value>36</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="36">
+      <Value>37</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>typical</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="37">
+      <Value>38</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>massive</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="38">
+      <Value>39</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>typical</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="39">
+      <Value>40</Value>
+      <Value>missing</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>malformed_syntax</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="40">
+      <Value>41</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>long_line</Value>
+      <Value>invalid</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="41">
+      <Value>42</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>massive</Value>
+      <Value>utf8_standard</Value>
+      <Value>invalid_key</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="42">
+      <Value>43</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>typical</Value>
+      <Value>utf16_bom</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="43">
+      <Value>44</Value>
+      <Value>missing</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="44">
+      <Value>45</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf8_standard</Value>
+      <Value>invalid_key</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="45">
+      <Value>46</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>massive</Value>
+      <Value>utf16_bom</Value>
+      <Value>malformed_syntax</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="46">
+      <Value>47</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>typical</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="47">
+      <Value>48</Value>
+      <Value>missing</Value>
+      <Value>invalid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="48">
+      <Value>49</Value>
+      <Value>exists</Value>
+      <Value>na</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="49">
+      <Value>50</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>massive</Value>
+      <Value>utf8_standard</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="50">
+      <Value>51</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>typical</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="51">
+      <Value>52</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="52">
+      <Value>53</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>long_line</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="53">
+      <Value>54</Value>
+      <Value>exists</Value>
+      <Value>na</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>long_line</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="54">
+      <Value>55</Value>
+      <Value>exists</Value>
+      <Value>na</Value>
+      <Value>valid_match</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>massive</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="55">
+      <Value>56</Value>
+      <Value>missing</Value>
+      <Value>na</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="56">
+      <Value>57</Value>
+      <Value>exists</Value>
+      <Value>na</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>typical</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="57">
+      <Value>58</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="58">
+      <Value>59</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>long_line</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="59">
+      <Value>60</Value>
+      <Value>exists</Value>
+      <Value>na</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="60">
+      <Value>61</Value>
+      <Value>exists</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>massive</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="61">
+      <Value>62</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>typical</Value>
+      <Value>utf8_standard</Value>
+      <Value>invalid_key</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="62">
+      <Value>63</Value>
+      <Value>exists</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>long_line</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="63">
+      <Value>64</Value>
+      <Value>missing</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="64">
+      <Value>65</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>massive</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="65">
+      <Value>66</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>massive</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="66">
+      <Value>67</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>long_line</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="67">
+      <Value>68</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>typical</Value>
+      <Value>utf8_standard</Value>
+      <Value>invalid_key</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="68">
+      <Value>69</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="69">
+      <Value>70</Value>
+      <Value>missing</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="70">
+      <Value>71</Value>
+      <Value>missing</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="71">
+      <Value>72</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="72">
+      <Value>73</Value>
+      <Value>missing</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="73">
+      <Value>74</Value>
+      <Value>missing</Value>
+      <Value>na</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="74">
+      <Value>75</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="75">
+      <Value>76</Value>
+      <Value>missing</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="76">
+      <Value>77</Value>
+      <Value>missing</Value>
+      <Value>na</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="77">
+      <Value>78</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>typical</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="78">
+      <Value>79</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf8_standard</Value>
+      <Value>malformed_syntax</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="79">
+      <Value>80</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>typical</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="80">
+      <Value>81</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>massive</Value>
+      <Value>utf16_bom</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="81">
+      <Value>82</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>typical</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>valid_builtin</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="82">
+      <Value>83</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>massive</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="83">
+      <Value>84</Value>
+      <Value>exists</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="84">
+      <Value>85</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>massive</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="85">
+      <Value>86</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>valid_match</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="86">
+      <Value>87</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>typical</Value>
+      <Value>utf8_standard</Value>
+      <Value>malformed_syntax</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="87">
+      <Value>88</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>massive</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="88">
+      <Value>89</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>long_line</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="89">
+      <Value>90</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="90">
+      <Value>91</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>massive</Value>
+      <Value>utf8_standard</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="91">
+      <Value>92</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>long_line</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="92">
+      <Value>93</Value>
+      <Value>missing</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="93">
+      <Value>94</Value>
+      <Value>exists</Value>
+      <Value>empty</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="94">
+      <Value>95</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="95">
+      <Value>96</Value>
+      <Value>missing</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="96">
+      <Value>97</Value>
       <Value>missing</Value>
       <Value>valid_syntax</Value>
       <Value>valid_match</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="97">
+      <Value>98</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
       <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="98">
+      <Value>99</Value>
+      <Value>missing</Value>
+      <Value>na</Value>
+      <Value>omitted</Value>
       <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="99">
+      <Value>100</Value>
+      <Value>missing</Value>
+      <Value>na</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="100">
+      <Value>101</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>omited</Value>
+    </Testcase>
+    <Testcase TCNo="101">
+      <Value>102</Value>
+      <Value>exists</Value>
+      <Value>empty</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="102">
+      <Value>103</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
+      <Value>invalid</Value>
       <Value>invalid</Value>
       <Value>file_path</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>malformed_syntax</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="103">
+      <Value>104</Value>
+      <Value>missing</Value>
+      <Value>empty</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="104">
+      <Value>105</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf16_bom</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="105">
+      <Value>106</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>massive</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="106">
+      <Value>107</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>long_line</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="107">
+      <Value>108</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>typical</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="108">
+      <Value>109</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>valid_match</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>massive</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="109">
+      <Value>110</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>typical</Value>
+      <Value>utf8_standard</Value>
+      <Value>ommited</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="110">
+      <Value>111</Value>
+      <Value>na</Value>
+      <Value>empty</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>utf16_bom</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="111">
+      <Value>112</Value>
+      <Value>na</Value>
+      <Value>valid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>massive</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="112">
+      <Value>113</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>typical</Value>
+      <Value>invalid</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="113">
+      <Value>114</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>typical</Value>
+      <Value>invalid</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="114">
+      <Value>115</Value>
+      <Value>exists</Value>
+      <Value>invalid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>ommited</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="115">
+      <Value>116</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>invalid</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>long_line</Value>
+      <Value>utf16_bom</Value>
+      <Value>invalid_key</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="116">
+      <Value>117</Value>
+      <Value>na</Value>
+      <Value>invalid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>invalid</Value>
+      <Value>file_path</Value>
+      <Value>file_path</Value>
+      <Value>no_ext</Value>
+      <Value>long_line</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>ommited</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="117">
+      <Value>118</Value>
+      <Value>exists</Value>
+      <Value>valid_syntax</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>restricted</Value>
+      <Value>file_path</Value>
+      <Value>special_chars</Value>
+      <Value>massive</Value>
+      <Value>utf16_bom</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="118">
+      <Value>119</Value>
+      <Value>exists</Value>
+      <Value>empty</Value>
+      <Value>valid_mismatch</Value>
+      <Value>omitted</Value>
+      <Value>stdout</Value>
+      <Value>file_path</Value>
+      <Value>standard_ext</Value>
+      <Value>na</Value>
+      <Value>invalid</Value>
+      <Value>valid_config</Value>
+      <Value>invalid_style</Value>
+      <Value>raise_on_error</Value>
+    </Testcase>
+    <Testcase TCNo="119">
+      <Value>120</Value>
+      <Value>missing</Value>
+      <Value>valid_syntax</Value>
+      <Value>omitted</Value>
+      <Value>valid</Value>
+      <Value>restricted</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>valid_config</Value>
+      <Value>valid_builtin</Value>
+      <Value>valid_filter</Value>
+    </Testcase>
+    <Testcase TCNo="120">
+      <Value>121</Value>
+      <Value>na</Value>
+      <Value>empty</Value>
+      <Value>valid_match</Value>
+      <Value>valid</Value>
+      <Value>stdout</Value>
+      <Value>stdin</Value>
+      <Value>na</Value>
+      <Value>na</Value>
+      <Value>utf8_standard</Value>
+      <Value>malformed_syntax</Value>
+      <Value>ommited</Value>
+      <Value>omited</Value>
     </Testcase>
   </Testset>
   <Header>
@@ -246,17 +1970,22 @@
     <Value>FILE_EXISTENCE</Value>
     <Value>FILE_CONTENT</Value>
     <Value>LEXER</Value>
-    <Value>LEXER_FLAG</Value>
     <Value>FORMATTER</Value>
-    <Value>FORMATTER_FLAG</Value>
     <Value>OUTPUT</Value>
+    <Value>INPUT_SOURCE</Value>
+    <Value>FILE_NAME_FORMAT</Value>
+    <Value>FILE_SIZE</Value>
+    <Value>INPUT_ENCODING</Value>
+    <Value>FORMATTE_CONFIG</Value>
+    <Value>STYLE_OPTION</Value>
+    <Value>FILTER</Value>
   </Header>
   <Stat-Data>
-    <ExecutionTime>0.018</ExecutionTime>
+    <ExecutionTime>0.076</ExecutionTime>
     <MaxDomainSize>4</MaxDomainSize>
     <MinDomainSize>2</MinDomainSize>
-    <TotalNoOfCombination>206</TotalNoOfCombination>
-    <TotalNoOfTests>17</TotalNoOfTests>
+    <TotalNoOfCombination>7571</TotalNoOfCombination>
+    <TotalNoOfTests>121</TotalNoOfTests>
     <Algorithm>IPOG</Algorithm>
   </Stat-Data>
 </System>
